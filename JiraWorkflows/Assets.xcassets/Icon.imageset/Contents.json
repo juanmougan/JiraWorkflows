@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "stopwatch_time_clock.png",
+      "filename" : "stopwatch_time_clock.pdf",
       "idiom" : "mac"
     }
   ],
@@ -10,6 +10,7 @@
     "version" : 1
   },
   "properties" : {
+    "localizable" : true,
     "template-rendering-intent" : "template"
   }
 }
