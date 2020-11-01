@@ -13,14 +13,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var popover: NSPopover!
     var statusBarItem: NSStatusItem!
-//    var statusItem: NSStatusItem?
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//
-//        self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-//        self.statusItem?.button?.title = "WorldTime"
-//    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.

@@ -18,8 +18,6 @@ func parse(json: String) -> Worklog {
     let decoder = JSONDecoder()
 
     let data = Data(json.utf8)
-    //JSONDecoder().decode(DatabaseObject.self, from: json.data(encoding: .utf8))
-    //if let jsonWorklogs = try? decoder.decode(Worklog.self, from: json) {
     if let jsonWorklogs = try? decoder.decode(Worklog.self, from: data) {
         // jsonWorklogs has the data
         return jsonWorklogs
@@ -39,8 +37,6 @@ struct JiraService {
     func getWorklog() -> Worklog {
         // Create a task with the command to run
         let task = Process()
-        // TODO get the JAR from
-//        let fileLocation = "/Users/juanm3/repository/com/github/juanmougan/jira/worklogs_collector/0.0.1-SNAPSHOT/worklogs_collector-0.0.1-SNAPSHOT.jar"
         let fileExists : Bool = FileManager.default.fileExists(atPath: jarPath)
         if !fileExists {
             print("file not found!")
