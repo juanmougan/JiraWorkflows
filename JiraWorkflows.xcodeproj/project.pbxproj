@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F762048A254B71E000724A35 /* FakeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7620489254B71E000724A35 /* FakeService.swift */; };
 		F7A272D1254A2A1C009CE582 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A272D0254A2A1C009CE582 /* AppDelegate.swift */; };
 		F7A272D3254A2A1C009CE582 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A272D2254A2A1C009CE582 /* ContentView.swift */; };
 		F7A272D5254A2A21009CE582 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7A272D4254A2A21009CE582 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F7620489254B71E000724A35 /* FakeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeService.swift; sourceTree = "<group>"; };
 		F7A272CD254A2A1C009CE582 /* JiraWorkflows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JiraWorkflows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A272D0254A2A1C009CE582 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7A272D2254A2A1C009CE582 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				F7A272DD254A2A21009CE582 /* JiraWorkflows.entitlements */,
 				F7A272D6254A2A21009CE582 /* Preview Content */,
 				F7E3B802254A613E008F2ED6 /* JiraService.swift */,
+				F7620489254B71E000724A35 /* FakeService.swift */,
 			);
 			path = JiraWorkflows;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F762048A254B71E000724A35 /* FakeService.swift in Sources */,
 				F7A272D3254A2A1C009CE582 /* ContentView.swift in Sources */,
 				F7A272D1254A2A1C009CE582 /* AppDelegate.swift in Sources */,
 				F7E3B803254A613E008F2ED6 /* JiraService.swift in Sources */,

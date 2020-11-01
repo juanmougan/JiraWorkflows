@@ -29,18 +29,25 @@ func parse(json: String) -> Worklog {
 }
 
 struct JiraService {
+    
+    var jarPath: String
+    
+    init(jarPath path: String) {
+        jarPath = path
+    }
+    
     func getWorklog() -> Worklog {
         // Create a task with the command to run
         let task = Process()
-        // TODO either receive this somehow, or put it somewhere like /bin/worklogs_collector ?
-        let fileLocation = "/Users/juanm3/code/juan/worklogs_collector/target/worklogs_collector-0.0.1-SNAPSHOT.jar"
-        let fileExists : Bool = FileManager.default.fileExists(atPath: fileLocation)
+        // TODO get the JAR from
+//        let fileLocation = "/Users/juanm3/repository/com/github/juanmougan/jira/worklogs_collector/0.0.1-SNAPSHOT/worklogs_collector-0.0.1-SNAPSHOT.jar"
+        let fileExists : Bool = FileManager.default.fileExists(atPath: jarPath)
         if !fileExists {
             print("file not found!")
             // TODO halt?
         }
         let BASH_PATH = "/bin/sh"
-        let javaCommand = "/usr/bin/java -jar \(fileLocation)"
+        let javaCommand = "/usr/bin/java -jar \(jarPath)"
         task.executableURL = URL(fileURLWithPath: BASH_PATH)
 
         // Add arguments
@@ -67,6 +74,5 @@ struct JiraService {
         print("Output: \(output)")
         print("Error: \(error)")
         return parse(json: output)
-
     }
 }
