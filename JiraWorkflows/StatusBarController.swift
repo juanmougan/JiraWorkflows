@@ -11,6 +11,7 @@ class StatusBarController {
     private var statusBar: NSStatusBar
     private var statusItem: NSStatusItem
     private var popover: NSPopover
+    private var eventMonitor: EventMonitor?
     
     init(_ popover: NSPopover) {
         self.popover = popover
@@ -26,6 +27,14 @@ class StatusBarController {
             
             statusBarButton.action = #selector(togglePopover(sender:))
             statusBarButton.target = self
+        }
+        
+        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: mouseEventHandler)
+    }
+    
+    func mouseEventHandler(_ event: NSEvent?) {
+        if(popover.isShown) {
+            hidePopover(event!)
         }
     }
     
