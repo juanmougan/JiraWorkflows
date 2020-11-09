@@ -7,27 +7,23 @@
 
 import SwiftUI
 
-enum Status: String {
-    case below = "below"
-    case ok = "ok"
-    case overtime = "overtime"
-}
 
 final class JiraData: ObservableObject {
     init() {
         // TODO use real service
-        self.worklog = self.jiraService.getCounter(tickets: 2, minutes: 120)
+        self.worklog = self.jiraService.getCounter(tickets: 2, minutes: 120, status: "BELOW")
     }
     
-    init(hours: Double, tickets: Int) {
-//        self.hours = hours
-//        self.tickets = tickets
-//        self.logStatus = logStatus
-        self.worklog = Worklog(minutesLogged: Int(hours) * 60, totalTickets: tickets)
+    init(hours: Double, tickets: Int, status: Status) {
+        self.worklog = Worklog(minutesLogged: Int(hours) * 60, totalTickets: tickets, status: status)
     }
     
+    /// Refreshes the data in this object, by calling the underlying service again
+    ///
+    /// Despite SwiftUI's Observable pattern, I need the UI to toggle this interaction
     func refresh() {
-        self.worklog = self.jiraService.getCounter(tickets: 2, minutes: 120)
+        self.worklog = self.jiraService.getCounter(tickets: Int.random(in: 3..<5), minutes: 390, status: "OK")
+        print("Now mocked is: \(self.worklog)")
     }
     
     func getTimeAndTickets() -> String {
@@ -39,11 +35,8 @@ final class JiraData: ObservableObject {
         return "You are on \"\(Status.below.rawValue)\" status"
     }
     
-    var jiraService = FakeService()
+    var jiraService = MockedService()
     @Published var worklog: Worklog
-//    @Published var hours = 0.0
-//    @Published var tickets = 0
-//    @Published var logStatus = Status.below
 }
 
 struct ContentView: View {
@@ -56,14 +49,12 @@ struct ContentView: View {
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 16.0)
-                //                .padding(.vertical, 12.0)
                 .frame(width: 360.0, height: 80.0, alignment: .topLeading)
             Text(jiraData.getStatus())
                 .font(Font.system(size: 20.0))
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 16.0)
-                //                .padding(.vertical, 12.0)
                 .frame(width: 360.0, height: 80, alignment: .topLeading)
             Button(action: {
                 jiraData.refresh()  // TODO unneeded?
@@ -92,8 +83,7 @@ struct ContentView: View {
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-//        ContentView(jiraData: JiraData(hours: 6.5, tickets: 2, logStatus: Status.ok))
-        ContentView(jiraData: JiraData(hours: 6.5, tickets: 2))
+        ContentView(jiraData: JiraData(hours: 6.5, tickets: 2, status: Status.below))
     }
 }
 #endif

@@ -9,7 +9,7 @@ import Foundation
 
 
 struct FakeService {
-    func getCounter(tickets: Int, minutes: Int) -> Worklog {
+    func getCounter(tickets: Int, minutes: Int, status: String) -> Worklog {
         // Create a task with the command to run
         let task = Process()
         let fileLocation = "/Users/juanm3/code/juan/fake_worklogs_collector/target/fake_worklogs_collector-1.0-SNAPSHOT-jar-with-dependencies.jar"
@@ -19,7 +19,7 @@ struct FakeService {
             // TODO halt?
         }
         let BASH_PATH = "/bin/sh"
-        let javaArgs = "\(tickets) \(minutes)"
+        let javaArgs = "\(tickets) \(minutes) \(status)"
         let javaCommand = "/usr/bin/java -jar \(fileLocation) \(javaArgs)"
         task.executableURL = URL(fileURLWithPath: BASH_PATH)
 
@@ -46,7 +46,7 @@ struct FakeService {
         let error = String(decoding: errorData, as: UTF8.self)
         if !error.trimmingCharacters(in: .whitespaces).isEmpty {
             print("ERROR: \(error)")
-            return Worklog(minutesLogged: 0, totalTickets: 0)
+            return Worklog(minutesLogged: 0, totalTickets: 0, status: Status.below)
         }
         print("Output: \(output)")
         return parse(json: output)
