@@ -15,8 +15,8 @@
 		F7A272DB254A2A21009CE582 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A272D9254A2A21009CE582 /* Main.storyboard */; };
 		F7A272E7254A2A21009CE582 /* JiraWorkflowsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A272E6254A2A21009CE582 /* JiraWorkflowsTests.swift */; };
 		F7A272F2254A2A21009CE582 /* JiraWorkflowsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A272F1254A2A21009CE582 /* JiraWorkflowsUITests.swift */; };
+		F7C473822559F4EE00CDFC33 /* Worklog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C473812559F4EE00CDFC33 /* Worklog.swift */; };
 		F7C7EEBF25560AA300E81362 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C7EEBE25560AA300E81362 /* EventMonitor.swift */; };
-		F7C7EEC425560D9400E81362 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C7EEC325560D9400E81362 /* MainViewController.swift */; };
 		F7C9A57A2550EB6C007FFFF1 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C9A5792550EB6C007FFFF1 /* StatusBarController.swift */; };
 		F7E3B803254A613E008F2ED6 /* JiraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E3B802254A613E008F2ED6 /* JiraService.swift */; };
 /* End PBXBuildFile section */
@@ -54,8 +54,8 @@
 		F7A272ED254A2A21009CE582 /* JiraWorkflowsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JiraWorkflowsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A272F1254A2A21009CE582 /* JiraWorkflowsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraWorkflowsUITests.swift; sourceTree = "<group>"; };
 		F7A272F3254A2A21009CE582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7C473812559F4EE00CDFC33 /* Worklog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worklog.swift; sourceTree = "<group>"; };
 		F7C7EEBE25560AA300E81362 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
-		F7C7EEC325560D9400E81362 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F7C9A5792550EB6C007FFFF1 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		F7E3B802254A613E008F2ED6 /* JiraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +119,7 @@
 				F7620489254B71E000724A35 /* FakeService.swift */,
 				F7C9A5792550EB6C007FFFF1 /* StatusBarController.swift */,
 				F7C7EEBE25560AA300E81362 /* EventMonitor.swift */,
-				F7C7EEC325560D9400E81362 /* MainViewController.swift */,
+				F7C473812559F4EE00CDFC33 /* Worklog.swift */,
 			);
 			path = JiraWorkflows;
 			sourceTree = "<group>";
@@ -280,12 +280,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7C7EEC425560D9400E81362 /* MainViewController.swift in Sources */,
 				F762048A254B71E000724A35 /* FakeService.swift in Sources */,
 				F7A272D3254A2A1C009CE582 /* ContentView.swift in Sources */,
 				F7A272D1254A2A1C009CE582 /* AppDelegate.swift in Sources */,
 				F7C7EEBF25560AA300E81362 /* EventMonitor.swift in Sources */,
 				F7C9A57A2550EB6C007FFFF1 /* StatusBarController.swift in Sources */,
+				F7C473822559F4EE00CDFC33 /* Worklog.swift in Sources */,
 				F7E3B803254A613E008F2ED6 /* JiraService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

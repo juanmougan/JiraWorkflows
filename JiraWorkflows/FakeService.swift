@@ -7,8 +7,9 @@
 
 import Foundation
 
+
 struct FakeService {
-    func getCounter(tickets: Int, minutes: Int) -> String {
+    func getCounter(tickets: Int, minutes: Int) -> Worklog {
         // Create a task with the command to run
         let task = Process()
         let fileLocation = "/Users/juanm3/code/juan/fake_worklogs_collector/target/fake_worklogs_collector-1.0-SNAPSHOT-jar-with-dependencies.jar"
@@ -45,9 +46,9 @@ struct FakeService {
         let error = String(decoding: errorData, as: UTF8.self)
         if !error.trimmingCharacters(in: .whitespaces).isEmpty {
             print("ERROR: \(error)")
-            return "ERROR: \(error)"
+            return Worklog(minutesLogged: 0, totalTickets: 0)
         }
         print("Output: \(output)")
-        return output
+        return parse(json: output)
     }
 }
