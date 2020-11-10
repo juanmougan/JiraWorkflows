@@ -27,6 +27,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Create the Status Bar Item with the above Popover
         statusBar = StatusBarController.init(popover)
         //        NSApp.activate(ignoringOtherApps: true)
+        
+        // Schedule an Activity to get JIRA's data
+        scheduleJiraRefreshData()
+    }
+    
+    // TODO maybe stop this with activity.invalidate() on applicationWillTerminate() ?
+    func scheduleJiraRefreshData() {
+        let activity = NSBackgroundActivityScheduler(identifier: "com.github.juanmougan.JiraWorkflows.refreshJira")
+        let minute:TimeInterval = 60.0
+        let hour:TimeInterval = 60.0 * minute
+        let day:TimeInterval = 24 * hour
+//        activity.interval = TimeInterval(day)
+        activity.interval = TimeInterval(60.0)
+        activity.repeats = true
+        activity.schedule() { (completion: NSBackgroundActivityScheduler.CompletionHandler) in
+            // Run JAR
+            let service = MockedService()
+            let worklog = service.getCounter(tickets: Int.random(in: 3..<5), minutes: 390, status: "OK")
+            print("GOT: \(worklog)")
+            completion(NSBackgroundActivityScheduler.Result.finished)
+        }
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
