@@ -46,8 +46,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let service = MockedService()
             let worklog = service.getCounter(tickets: Int.random(in: 3..<5), minutes: 390, status: "OK")
             print("GOT: \(worklog)")
+            self.showNotification(worklog: worklog)
             completion(NSBackgroundActivityScheduler.Result.finished)
         }
+    }
+    
+    func showNotification(worklog: Worklog) {
+        let notification = NSUserNotification()
+        notification.title = "\(worklog.minutesLogged) minutes logged today"
+        notification.subtitle = "On \(worklog.totalTickets) tickets"
+        notification.informativeText = "You are on \(worklog.status) status"
+        notification.soundName = NSUserNotificationDefaultSoundName
+        NSUserNotificationCenter.default.deliver(notification)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
