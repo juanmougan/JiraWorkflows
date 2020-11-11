@@ -26,7 +26,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Create the Status Bar Item with the above Popover
         statusBar = StatusBarController.init(popover)
-        //        NSApp.activate(ignoringOtherApps: true)
         
         // Schedule an Activity to get JIRA's data
         scheduleJiraRefreshData()
@@ -38,8 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let minute:TimeInterval = 60.0
         let hour:TimeInterval = 60.0 * minute
         let day:TimeInterval = 24 * hour
-//        activity.interval = TimeInterval(day)
-        activity.interval = TimeInterval(60.0)
+        activity.interval = TimeInterval(day)
         activity.repeats = true
         activity.schedule() { (completion: NSBackgroundActivityScheduler.CompletionHandler) in
             // Run JAR
