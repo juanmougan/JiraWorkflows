@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Cron",
+        "repositoryURL": "https://github.com/safx/Cron-Swift.git",
+        "state": {
+          "branch": "master",
+          "revision": "0444a3b8c62ecccf52d2868664e028267e1c0e14",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

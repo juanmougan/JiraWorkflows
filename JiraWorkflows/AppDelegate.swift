@@ -7,6 +7,7 @@
 
 import Cocoa
 import SwiftUI
+import Cron
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -28,25 +29,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBar = StatusBarController.init(popover)
         
         // Schedule an Activity to get JIRA's data
-        scheduleJiraRefreshData()
+        //scheduleJiraRefreshData()
+        setUpCron()
     }
     
-    // TODO maybe stop this with activity.invalidate() on applicationWillTerminate() ?
-    func scheduleJiraRefreshData() {
-        let activity = NSBackgroundActivityScheduler(identifier: "com.github.juanmougan.JiraWorkflows.refreshJira")
-        let minute:TimeInterval = 60.0
-        let hour:TimeInterval = 60.0 * minute
-        let day:TimeInterval = 24 * hour
-        activity.interval = TimeInterval(day)
-        activity.repeats = true
-        activity.schedule() { (completion: NSBackgroundActivityScheduler.CompletionHandler) in
-            // Run JAR
-            let service = MockedService()
-            let worklog = service.getCounter(tickets: Int.random(in: 3..<5), minutes: 390, status: "OK")
-            print("GOT: \(worklog)")
-            self.showNotification(worklog: worklog)
-            completion(NSBackgroundActivityScheduler.Result.finished)
-        }
+    func setUpCron() {
+        _ = try? CronJob(pattern: "* * 17 * * *") { () -> Void in
+            self.runTask()
+        }   // TODO catch cron failure?
+    }
+    
+    func runTask() {
+        // Run JAR
+        let service = MockedService()
+        // TODO handle stderr from service somehow
+        let worklog = service.getCounter(tickets: Int.random(in: 3..<5), minutes: 390, status: "OK")
+        print("GOT: \(worklog)")
+        self.showNotification(worklog: worklog)
     }
     
     func showNotification(worklog: Worklog) {

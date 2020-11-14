@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,7 @@
 		F7C7EEBF25560AA300E81362 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C7EEBE25560AA300E81362 /* EventMonitor.swift */; };
 		F7C9A57A2550EB6C007FFFF1 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C9A5792550EB6C007FFFF1 /* StatusBarController.swift */; };
 		F7E3B803254A613E008F2ED6 /* JiraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E3B802254A613E008F2ED6 /* JiraService.swift */; };
+		F7F0D776255DEAB800743C72 /* Cron in Frameworks */ = {isa = PBXBuildFile; productRef = F7F0D775255DEAB800743C72 /* Cron */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7F0D776255DEAB800743C72 /* Cron in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +171,9 @@
 			dependencies = (
 			);
 			name = JiraWorkflows;
+			packageProductDependencies = (
+				F7F0D775255DEAB800743C72 /* Cron */,
+			);
 			productName = JiraWorkflows;
 			productReference = F7A272CD254A2A1C009CE582 /* JiraWorkflows.app */;
 			productType = "com.apple.product-type.application";
@@ -240,6 +245,9 @@
 				Base,
 			);
 			mainGroup = F7A272C4254A2A1B009CE582;
+			packageReferences = (
+				F7F0D774255DEAB800743C72 /* XCRemoteSwiftPackageReference "Cron-Swift" */,
+			);
 			productRefGroup = F7A272CE254A2A1C009CE582 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -616,6 +624,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F7F0D774255DEAB800743C72 /* XCRemoteSwiftPackageReference "Cron-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/safx/Cron-Swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F7F0D775255DEAB800743C72 /* Cron */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7F0D774255DEAB800743C72 /* XCRemoteSwiftPackageReference "Cron-Swift" */;
+			productName = Cron;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F7A272C5254A2A1C009CE582 /* Project object */;
 }
