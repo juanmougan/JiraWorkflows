@@ -14,6 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var popover = NSPopover.init()
     var statusBar: StatusBarController?
+    // This pattern means: run every business day at 5pm
+    let cronPattern = "0 0 17 * * 1,2,3,4,5 *"
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -28,13 +30,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Create the Status Bar Item with the above Popover
         statusBar = StatusBarController.init(popover)
         
-        // Schedule an Activity to get JIRA's data
-        //scheduleJiraRefreshData()
+        // Set up a cron to get JIRA's data
         setUpCron()
     }
     
     func setUpCron() {
-        _ = try? CronJob(pattern: "* * 17 * * *") { () -> Void in
+        _ = try? CronJob(pattern: cronPattern) { () -> Void in
             self.runTask()
         }   // TODO catch cron failure?
     }
