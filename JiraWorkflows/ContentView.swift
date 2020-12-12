@@ -28,7 +28,7 @@ struct ContentView: View {
                 .frame(width: 360.0, height: 80, alignment: .topLeading)
             Button(action: {
                 serviceWrapper.refreshData(data: jiraData)
-                print("Mocked in button action: \(jiraData.timeAndTicketsMsg)")
+                print("In button action: \(jiraData.timeAndTicketsMsg)")
             })
             {
                 Text("Refresh")

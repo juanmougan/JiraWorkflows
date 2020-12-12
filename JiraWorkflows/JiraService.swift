@@ -10,22 +10,24 @@ import Foundation
 
 struct JiraService {
     
-    var jarPath: String
+    let jarPath: String
     
     init(jarPath path: String) {
-        jarPath = path
+        self.jarPath = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(path).path
+        print("IN JiraService: \(self.jarPath)")
+//        jarPath = path
     }
     
     func getWorklog() -> Worklog {
         // Create a task with the command to run
         let task = Process()
-        let fileExists : Bool = FileManager.default.fileExists(atPath: jarPath)
+        let fileExists : Bool = FileManager.default.fileExists(atPath: self.jarPath)
         if !fileExists {
             print("file not found!")
             // TODO halt?
         }
         let BASH_PATH = "/bin/sh"
-        let javaCommand = "/usr/bin/java -jar \(jarPath)"
+        let javaCommand = "/usr/bin/java -jar \(self.jarPath)"
         task.executableURL = URL(fileURLWithPath: BASH_PATH)
 
         // Add arguments
