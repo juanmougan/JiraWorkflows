@@ -42,10 +42,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func runTask() {
         // Run JAR
-//        let service = MockedService()
         let service = JiraService(jarPath: ".m2/repository/com/github/juanmougan/jira/worklogs_collector/0.0.1-SNAPSHOT/worklogs_collector-0.0.1-SNAPSHOT.jar")
         // TODO handle stderr from service somehow
-//        let worklog = service.getCounter(tickets: Int.random(in: 3..<5), minutes: 390, status: "OK")
         let worklog = service.getWorklog()
         print("GOT: \(worklog)")
         self.showNotification(worklog: worklog)

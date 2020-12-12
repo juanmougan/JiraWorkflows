@@ -12,7 +12,8 @@ struct FakeService {
     func getCounter(tickets: Int, minutes: Int, status: String) -> Worklog {
         // Create a task with the command to run
         let task = Process()
-        let fileLocation = "/Users/juanm3/code/juan/fake_worklogs_collector/target/fake_worklogs_collector-1.0-SNAPSHOT-jar-with-dependencies.jar"
+        let jarSuffix = "/.m2/repository/com/github/juanmougan/jira/fake_worklogs_collector/1.0-SNAPSHOT/fake_worklogs_collector-1.0-SNAPSHOT-jar-with-dependencies.jar"
+        let fileLocation = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(jarSuffix).path
         let fileExists : Bool = FileManager.default.fileExists(atPath: fileLocation)
         if !fileExists {
             print("file not found!")
